@@ -33,17 +33,26 @@ class MainApp(App):
         result = requests.get(f"https://friendly-fitness-app-6a322.firebaseio.com/{self.my_friend_id}.json")
         data = json.loads(result.content.decode())
 
-        avatar_image = self.root.ids["home_screen"].ids["avatar_image"]
+        avatar_image = self.root.ids["avatar_image"]
         avatar_image.source = f"icons/avatars/{data['avatar']}"
 
         streak_label = self.root.ids["home_screen"].ids["streak_label"]
         streak_label.text = str(data["streak"]) + " Day Streak!"
 
+        friend_id_label = self.root.ids["settings_screen"].ids["friend_id_label"]
+        friend_id_label.text = "Friend ID: " + str(self.my_friend_id)
+
         banner_grid = self.root.ids["home_screen"].ids["banner_grid"]
         workouts = data["workouts"][1:]
         for workout in workouts:
             for i in range(5):
-                W = WorkoutBanner(workout_image=workout['workout_image'], description=workout['description'], type_image=workout['type_image'], number=workout['number'], units=workout['units'], likes=workout['likes'])
+                W = WorkoutBanner(
+                    workout_image=workout['workout_image'], 
+                    description=workout['description'], 
+                    type_image=workout['type_image'], 
+                    number=workout['number'], 
+                    units=workout['units'], 
+                    likes=workout['likes'])
                 banner_grid.add_widget(W)
 
     def change_screen(self, screen_name):

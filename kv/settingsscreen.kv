@@ -1,4 +1,36 @@
 <SettingsScreen>:
-    Button:
-        text: "You are in settings screen"
-        on_release: app.change_screen("home_screen")
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#39B3F2")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    FloatLayout:
+        Label:
+            id: friend_id_label
+            text: "Friend ID: "
+            size_hint: 1, .1
+            pos_hint: {"top": 1, "left": 1}
+        ImageButton:
+            source: "icons/avatars/man.png"
+            size_hint: .5, .2
+            pos_hint: {"top": .7, "left": 1}
+            on_release: print("Change avatar")
+        Label:
+            size_hint: .3, .2
+            pos_hint: {"top": .7, "right": .8}
+            text: "Change Avatar"
+        ImageButton:
+            source: "icons/add.png"
+            size_hint: .5, .2
+            pos_hint: {"top": .5, "left": 1}
+            on_release: print("Add friend")
+        Label:
+            size_hint: .3, .2
+            pos_hint: {"top": .5, "right": .8}
+            text: "Add A Friend"
+        ImageButton:
+            source: "icons/back.png"
+            size_hint: .2, .15
+            pos_hint: {"top": .2, "right": .25}
+            on_release: app.change_screen("home_screen")
