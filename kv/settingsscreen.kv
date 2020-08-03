@@ -16,19 +16,21 @@
             size_hint: .5, .2
             pos_hint: {"top": .7, "left": 1}
             on_release: print("Change avatar")
-        Label:
+        LabelButton:
             size_hint: .3, .2
             pos_hint: {"top": .7, "right": .8}
             text: "Change Avatar"
+            on_release: print("Change avatar")
         ImageButton:
             source: "icons/add.png"
             size_hint: .5, .2
             pos_hint: {"top": .5, "left": 1}
             on_release: print("Add friend")
-        Label:
+        LabelButton:
             size_hint: .3, .2
             pos_hint: {"top": .5, "right": .8}
             text: "Add A Friend"
+            on_release: print("Add friend")
         ImageButton:
             source: "icons/back.png"
             size_hint: .2, .15
